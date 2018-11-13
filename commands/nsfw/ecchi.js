@@ -34,7 +34,7 @@ class ecchiCommand extends Command {
         }
 		randomPuppy('ecchi')
             .then(url => {
-                const embed = new Discord.RichEmbed()
+                const embed = this.client.util.embed()
                     .setFooter(`ecchi`)
                     .setDescription(`[Image URL](${url})`)   
                     .setImage(url)

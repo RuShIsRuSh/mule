@@ -22,34 +22,35 @@ class KissCommand extends Command {
     }
 
     exec(message, args) {
-        request.get('https://weebs.cf/random/kiss').then(body => {
+        request.get('https://nekos.life/api/v2/img/kiss').then(r => {
         const recipient = message.content.split(/\s+/g).slice(1).join(" ");
-        var kiss = body.text;
+		let body = r.body
+        let kiss = body.url;
 
         if (!recipient) {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(kiss);
             return message.channel.send(`You can't kiss yourself, but I'll kiss you, ${message.author}!`, { embed: embed });
 
         } else if (message.mentions.users.first() == message.author) {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(kiss);
             return message.channel.send(`You can't kiss yourself, but I'll kiss you, ${message.author}!`, { embed: embed });
 
         } else if (message.mentions.users.first() == this.client.user) {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(kiss);
             return message.channel.send(`I-It's not like I wanted you to kiss me or anything...�:*(?�?�??)*:�`, { embed: embed });
 
         } else {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(kiss)
                 .setDescription(`${message.author} kisses ${recipient}!`);
-          return message.channel.send({ embed });
+          return message.channel.send(embed);
         }
 	});
 }

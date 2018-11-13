@@ -24,7 +24,7 @@ class PunchCommand extends Command {
     exec(message, args) {
         if (!args.input) {
             request.get('https://weebs.cf/random/punch').then(body => {
-                let embed = new Discord.RichEmbed()
+                const embed = this.client.util.embed()
                     .setDescription(`**${this.client.user.username}** punches **${message.author.username}**`)
                     .setImage(body.text)
                     .setFooter(`Requested by ${message.author.username} | 💛 API : ${Date.now() - message.createdTimestamp} ms`)
@@ -35,7 +35,7 @@ class PunchCommand extends Command {
             });
         } else {
             request.get('https://weebs.cf/random/punch').then(body => {
-                let embed = new Discord.RichEmbed()
+                const embed = this.client.util.embed()
                     .setDescription(`**${message.author.username}** punches **${args.input}**`)
                     .setImage(body.text)
                     .setFooter(`Requested by ${message.author.username} | 💛 API : ${Date.now() - message.createdTimestamp} ms`)

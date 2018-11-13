@@ -59,9 +59,9 @@ class PornCommand extends Command {
 
         randomPuppy(sub)
             .then(url => {
-                const embed = new Discord.RichEmbed()
+                const embed = this.client.util.embed()
                     .setFooter(`Lingerie`)
-                    .setDescription(`[Image URL](${url})`)   
+                    //.setDescription(`[Image URL](${url})`)   
                     .setImage(url)
                     .setColor('#A187E0');
                 return message.channel.send({ embed });

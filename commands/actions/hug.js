@@ -26,25 +26,25 @@ class HugCommand extends Command {
         var hug = hugP[Math.round(Math.random() * (hugP.length - 1))]
 
         if (!recipient) {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(hug);
             return message.channel.send(`You can't hug yourself, but I'll hug you, ${message.author}!`, { embed: embed });
 
         } else if (message.mentions.users.first() == message.author) {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(hug);
             return message.channel.send(`You can't hug yourself, but I'll hug you, ${message.author}!`, { embed: embed });
 
         } else if (message.mentions.users.first() == this.client.user) {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(hug);
             return message.channel.send(`ల(\*´= ◡ =｀\*) Such a warm hug..thank you~~ Nyaa~~`, { embed: embed });
 
         } else {
-            const embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setColor('#FBCFCF')
                 .setImage(hug);
             return message.channel.send(`${message.author} hugs ${recipient}!`, { embed: embed });

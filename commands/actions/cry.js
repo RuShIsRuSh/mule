@@ -22,7 +22,7 @@ class CryCommand extends Command {
             .get("https://rra.ram.moe/i/r?type=cry")
             //.set("User-Agent", "Akane (https://github.com/suushii/akane)");
         // Define embed
-        const embed = new Discord.RichEmbed()
+        const embed = this.client.util.embed()
             .setColor("#18f7c7")
             .setDescription(
                 `Give <@${message.author.id}> some emotional support!`
@@ -31,7 +31,7 @@ class CryCommand extends Command {
             .setImage(`https://rra.ram.moe${body.path}`)
             .setTimestamp();
         // Send message
-        return message.channel.send({ embed });
+        return message.util.send({ embed });
     }
 }
 

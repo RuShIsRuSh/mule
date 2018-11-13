@@ -22,7 +22,7 @@ class LewdCommand extends Command {
     }
 
     exec(message, args) {
-        let embed = new Discord.RichEmbed()
+        const embed = this.client.util.embed()
             .setColor('#FBCFCF')
             .setImage(lewdP[Math.round(Math.random() * (lewdP.length - 1))]);
         return message.channel.send('L-Lewd!', { embed: embed });

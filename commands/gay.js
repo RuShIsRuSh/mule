@@ -1,6 +1,6 @@
 const fs = require('fs');
-const {Command} = require('discord-akairo');
-//const Command = require('../struct/custom/Command');
+//const {Command} = require('discord-akairo');
+const Command = require('../struct/custom/Command');
 const seedrandom = require('seedrandom');
 const yaml = require('js-yaml');
 

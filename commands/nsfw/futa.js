@@ -35,7 +35,7 @@ class futaCommand extends Command {
         }
         randomPuppy('futanari')
         .then(url => {
-            let embed = new Discord.RichEmbed()
+            const embed = this.client.util.embed()
                 .setFooter(`futanari`)
                 .setDescription(`[Image URL](${url})`)   
                 .setImage(url)

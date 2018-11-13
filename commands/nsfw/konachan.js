@@ -35,13 +35,13 @@ class KonachanCommand extends Command {
             .then(booru.commonfy)
             .then(images => {
                 for (let image of images) {
-                    const embed = new Discord.RichEmbed()
+                    const embed = this.client.util.embed()
                         .setAuthor(`Konachan`, 'https://b.catgirlsare.sexy/NrAI.png')
                         .setDescription(`**Score**: ${image.common.score}\n**Rating**: ${this.getRating(image.common.rating)}\n**Tags**:\n\n\`${image.common.tags}\``)
                         .setImage(image.common.file_url)
 						            .setFooter(`Requested by ${message.author.username}`)
                         .setColor('#E89F3E');
-                    return message.channel.send({ embed });
+                    return message.util.send({ embed });
                 }
             }).catch(err => {
                 if (err.name === 'booruError') {

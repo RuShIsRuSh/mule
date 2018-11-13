@@ -33,12 +33,12 @@ class GelbooruCommand extends Command {
             .then(booru.commonfy)
             .then(images => {
                 for (let image of images) {
-                    const embed = new Discord.RichEmbed()
+                    const embed = this.client.util.embed()
                         .setAuthor(`Gelbooru | ${query}`, 'https://b.catgirlsare.sexy/NrAI.png')
                         .setDescription(`[Image URL](${image.common.file_url})`)
                         .setImage(image.common.file_url)
                         .setColor('#E89F3E');
-                    return message.channel.send({ embed });
+                    return message.util.send({ embed });
                 }
             }).catch(err => {
                 if (err.name === 'booruError') {

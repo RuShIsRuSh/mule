@@ -37,7 +37,7 @@ class HentaiCommand extends Command {
 
         randomPuppy(randSubreddit)
             .then(url => {
-                const embed = new Discord.RichEmbed()
+                const embed = this.client.util.embed()
                     .setFooter(`${randSubreddit}`)
                     .setDescription(`[Image URL](${url})`)   
                     .setImage(url)
