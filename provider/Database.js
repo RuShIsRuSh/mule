@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-const Database = new Sequelize('loveless_discord', 'loveless', 'nat4para1', {
-    host: 'tommy.heliohost.org',
+const Database = new Sequelize(process.env.db, process.env.user, process.env.pass, {
+    host: process.env.host,
     port: 3306,
     dialect: 'mysql',
 
