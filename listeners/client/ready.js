@@ -13,7 +13,6 @@ class ReadyListener extends Listener {
   }
 
   exec() {
-    try {
       const me = this.client.user;
       const guildSize = this.client.guilds.size;
 
@@ -30,7 +29,6 @@ class ReadyListener extends Listener {
       //this.client.getArticleCategories = promisify(this.client.request.getArticleCategories.bind(this.client.request));
       //this.client.getImageInfo = promisify(this.client.request.getImageInfo.bind(this.client.request));
 
-	}
   }
 }
 
