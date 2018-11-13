@@ -1,4 +1,4 @@
-const { Command } = require("discord-akairo");
+const Command = require('../../struct/custom/Command');
 const Discord = require('discord.js');
 const { hugP } = require('../../assets/json/actions.json');
 

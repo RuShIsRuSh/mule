@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 
-const Database = new Sequelize('Eros', null, null, {
-  dialect: 'sqlite',
+const Database = new Sequelize('loveless_discord', 'loveless', 'nat4para1', {
+    host: 'tommy.heliohost.org',
+    port: 3306,
+    dialect: 'mysql',
 
   pool: {
     max: 10,
@@ -12,8 +14,8 @@ const Database = new Sequelize('Eros', null, null, {
   logging: false,
   omitNull: true,
   define: { freezeTableName: true },
-  operatorsAliases: Sequelize.Op,
-  storage: `${__dirname}/Eros.db`
+  operatorsAliases: Sequelize.Op
+  //storage: `${__dirname}/Eros.db`
 });
 
 module.exports = Database;

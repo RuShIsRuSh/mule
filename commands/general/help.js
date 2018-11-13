@@ -56,29 +56,35 @@ class HelpCommand extends Command {
 
     return message.util.send({ embed });
   }
-
   defaultHelp(message, prefix, pub) {
     const embed = this.client.util.embed()
       .setColor(0xFF00AE)
       .setTitle('Commands')
-      .setDescription(`${message.guild ? `This guild's prefix is \`${prefix}\`\n` : ''}For more info about a command, see: \`help [command]\``);
-
-    for (const category of this.handler.categories.values()) {
+      .setDescription(`${message.guild ? `This guild's prefix is \`${prefix}\`\n` : ''}For more info about a command, see: \`help [command]\``)
+    const guild = message.guild;
+    const nsfwRole = this.client.guildSettings.get(guild.id, 'nsfwRoleID', null);
+	for (const category of this.handler.categories.values()) {
       const title = {
         admin: 'Server Manager',
-        general: 'General',
-        kamihime: 'Kamihime',
-        util: 'Utilities'
+        FUN: 'FUN',
+        Edu: 'Educational',
+        general: 'GENERAL',
+        ACTIONS: 'ACTIONS',
+        NSFW: 'NSFW',
+        util: 'UTILITIES'
       }[category.id];
-
       if (
         (!message.guild && category.id === 'admin') ||
-        (message.guild && category.id === 'admin' && !message.channel.permissionsFor(message.member).has('MANAGE_GUILD'))
+        (message.guild && category.id === 'admin' && !message.channel.permissionsFor(message.member).has('MANAGE_GUILD')),
+        (!message.guild && category.id == 'NSFW') || 
+	    (message.guild && category.id === 'NSFW' && !message.member.roles.has(nsfwRole))
       ) continue;
       const publicCommands = message.author.id === this.client.ownerID && !pub ? category : category.filter(c => !c.ownerOnly);
       if (title) embed.addField(title, publicCommands.map(c => `\`${c.aliases[0]}\``).join(', '));
     }
-
+    if(!message.member.roles.has(nsfwRole)){
+    embed.setFooter(`*NOTE: To see "NSFW Category" you must have NSFW role [ DO ${prefix}nsfw ]*`);
+    }
     return message.util.send({ embed });
   }
 }

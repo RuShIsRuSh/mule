@@ -8,7 +8,7 @@ const defineGuild = require('./models/guild');
 // const defineKH = require('./models/kamihime');
 
 const Command = require('../struct/custom/Command');
-const APIError = require('../struct/APIError');
+//const APIError = require('../struct/APIError');
 const Selection = require('../struct/Selection');
 global.requireUtil = require('../utils/require-util');
 
@@ -58,9 +58,9 @@ class ErosClient extends AkairoClient {
 
     // this.khDB = new SequelizeProvider(defineKH, { idColumn: 'khID' });
 
-    this.request = null;
+    //this.request = null;
 
-    this.APIError = APIError;
+    //this.APIError = APIError;
 
     this.util.selection = new Selection(this);
   }
@@ -90,14 +90,6 @@ class ErosClient extends AkairoClient {
     // await defineKH.sync();
     // status('Kamihime Database synchronised!');
     await this.guildSettings.init();
-    status('Provider set!');
-    this.request = new wikia({
-      protocol: 'https',
-      server: 'kamihime-project.wikia.com',
-      path: '',
-      debug: false
-    });
-    status(`Initiated Wikia Server: ${this.request.protocol} | ${this.request.server}`);
 
     return this.login(this.config.TOKEN);
   }

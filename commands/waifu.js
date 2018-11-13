@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {Command} = require('discord-akairo');
+const Command = require('../struct/custom/Command');
 const seedrandom = require('seedrandom');
 const yaml = require('js-yaml');
 
@@ -15,24 +15,6 @@ const {
 	cupSizes,
 	bloodTypes
 } = constants;
-
-const options = {
-	aliases: ['waifu', 'waifustats'],
-	args: [
-		{
-			id: 'user',
-			type: 'relevant',
-			match: 'content',
-			default: message => message.author
-		}
-	],
-	category:'FUN',
-	description:{
-		//usage:'r!waifu @Example#1234', 'r!waifu'
-		content:'Get the waifu stats of you, or someone else!',
-		examples:['r!waifu @Example#1234', 'r!waifu']
-	}
-};
 
 const infoMethods = {
 	heightAndWeight(rnd) {
@@ -160,8 +142,27 @@ function bar(value, size, chars = [' ', '▌', '█']) {
 
 	return barString;
 }
-
-function exec(message, {user}) {
+class WaifuCommand extends Command {
+  constructor() {
+    super('waifu', {
+	aliases: ['waifu', 'waifustats'],
+	args: [
+		{
+			id: 'user',
+			type: 'relevant',
+			match: 'content',
+			default: message => message.author
+		}
+	],
+	category:'FUN',
+	description:{
+		//usage:'r!waifu @Example#1234', 'r!waifu'
+		content:'Get the waifu stats of you, or someone else!',
+		examples:['r!waifu @Example#1234', 'r!waifu']
+	}
+    });
+  }
+exec(message, {user}) {
 	const userRNG = seedrandom('waifu-' + user.id);
 
 	// The type of the waifu
@@ -215,5 +216,6 @@ function exec(message, {user}) {
 		})
 	});
 }
+}
 
-module.exports = new Command('waifu', exec, options);
+module.exports = WaifuCommand;

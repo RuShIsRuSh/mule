@@ -12,7 +12,8 @@ class cuddlecmd extends Command {
 			      description:{
 			        content:"Cuddle with your loved ones like they are right there <3",
 			        usage:['r!cuddle']
-        }
+        },
+		channel: 'guild'
         });
     }
 

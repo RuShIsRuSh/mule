@@ -1,5 +1,5 @@
 const { status, error } = require('../../utils/console');
-const { defaultPrefix } = require('../../auth');
+const { ownerID, defaultPrefix } = require('../../auth');
 const guilds = require('../models/guild');
 
 module.exports = async guild => {
@@ -19,7 +19,7 @@ module.exports = async guild => {
       nsfwRoleID: nsfwChannel ? nsfwChannel.id : null,
       loli: false
     });
-    const welcomeMessage = [`Hello, ${guild.owner.user.username}. I joined your server, ${guild.name}.`];
+    const welcomeMessage = [`Hello, ${guild.owner.user.username} . I joined your server, ${guild.name}. BOT OWNER: <@${ownerID}>`];
     if (nsfwChannel)
       welcomeMessage.push(
         `I have detected that you have an NSFW channel (${nsfwChannel.name}) and I have set it as the NSFW Channel for your guild settings in my database.`
@@ -43,19 +43,7 @@ module.exports = async guild => {
     if (welcomeMessage.length > 1) {
       welcomeMessage.push(
         `\n\nTo start configuring your guild's settings, see \`${defaultPrefix}help\` in your guild.\t\nExamples:\n` +
-        `${nsfwChannel
-          ? `\t\`${defaultPrefix}nsfwchannel <channel mention>\``
-          : ''}` +
-        `${nsfwRole
-          ? nsfwChannel
-            ? `\n\t\`${defaultPrefix}nsfwrole <role mention>\``
-            : `\t\`${defaultPrefix}nsfwrole <role mention>\``
-          : ''}` +
-        `${nsfwChannel || nsfwRole
-          ? twitterChannel
-            ? `\n\t\`${defaultPrefix}twitterchannel <channel mention>\``
-            : `\t\`${defaultPrefix}twitterchannel <channel mention>\``
-          : ''}`
+		`${defaultPrefix}nsfwchannel <channel mention> | ${defaultPrefix}nsfwrole <role mention/id>`
       );
       guild.owner.send(welcomeMessage.join('\n'));
     }

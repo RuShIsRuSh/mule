@@ -1,4 +1,4 @@
-const { Command } = require('discord-akairo');
+const Command = require('../../struct/custom/Command');
 const fetch = require('snekfetch');
 const Discord = require('discord.js');
 const errors = require('../../assets/json/errors');

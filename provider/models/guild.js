@@ -1,26 +1,26 @@
-const { defaultPrefix } = require('../../auth');
-const { TEXT, BOOLEAN } = require('sequelize');
+const { ownerID, defaultPrefix } = require('../../auth');
+const { DataTypes ,TEXT, BOOLEAN } = require('sequelize');
 const db = require('../Database');
 
 module.exports = db.define('guilds', {
   id: {
-    type: TEXT,
+    type: DataTypes.STRING,
     unique: true,
     primaryKey: true
   },
   name: TEXT,
   owner: TEXT,
   prefix: {
-    type: TEXT,
+    type: DataTypes.STRING,
     defaultValue: defaultPrefix
   },
   twitterChannelID: {
-    type: TEXT,
+    type: DataTypes.STRING,
     defaultValue: null,
     allowNull: true
   },
-  nsfwChannelID: TEXT,
-  nsfwRoleID: TEXT,
+  nsfwChannelID: DataTypes.STRING,
+  nsfwRoleID: DataTypes.STRING,
   loli: {
     type: BOOLEAN,
     defaultValue: false,

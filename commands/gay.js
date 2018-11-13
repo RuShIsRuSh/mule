@@ -1,6 +1,6 @@
 const fs = require('fs');
-//const {Command} = require('discord-akairo');
-const Command = require('../struct/custom/Command');
+const {Command} = require('discord-akairo');
+//const Command = require('../struct/custom/Command');
 const seedrandom = require('seedrandom');
 const yaml = require('js-yaml');
 
@@ -12,8 +12,9 @@ let overrides = {};
 if (fs.existsSync('commands/gay-overrides.yml')) {
 	overrides = yaml.safeLoad(fs.readFileSync('commands/gay-overrides.yml'), 'utf8');
 }
-
-const options = {
+class GAYCommand extends Command {
+  constructor() {
+    super('gay', {
 	aliases: ['gay', 'gya'],
 	args: [{
 		id: 'user',
@@ -25,9 +26,9 @@ const options = {
 	description:{ 
 	content:'Check how gay someone is! If you don\'t mention anyone, the bot will give **your** results\n__**Examples:**__: `r!gay @Example#1234`, `r!gay`'
 	}
-};
-
-function exec(message, args) {
+    });
+  }
+exec(message, args) {
 	const user = args.user;
 
 	function numberModifier(x) {
@@ -118,5 +119,5 @@ function exec(message, args) {
 		})
 	});
 }
-
-module.exports = new Command('gay', exec, options);
+}
+module.exports = GAYCommand;
