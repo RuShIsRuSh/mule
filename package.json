@@ -8,7 +8,7 @@
     "bufferutil": "^4.0.0",
     "discord-akairo": "github:1Computer1/discord-akairo#master",
     "discord-paginationembed": "github:gazmull/discord-paginationembed",
-    "discord.js": "^11.4.2",
+    "discord.js": "github:discordjs/discord.js",
     "infobox-parser": "^3.0.3",
     "moment-timezone": "^0.5.17",
     "nodemw": "^0.12.1",
