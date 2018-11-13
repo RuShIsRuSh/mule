@@ -13,6 +13,7 @@
     "infobox-parser": "^3.0.3",
     "moment-timezone": "^0.5.17",
     "mysql2": "^1.6.4",
+    "js-yaml": "^3.10.0",
     "nodemw": "^0.12.1",
     "random-puppy": "^1.1.0",
     "seedrandom": "^2.4.4",
