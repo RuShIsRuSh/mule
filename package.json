@@ -26,11 +26,13 @@
     "eslint": "^5.8.0"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=10",
+    "npm": "*"
   },
   "scripts": {
     "test": "eslint --ignore-path .gitignore .",
-    "lint": "eslint --ignore-path .gitignore . --fix"
+    "lint": "eslint --ignore-path .gitignore . --fix",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
