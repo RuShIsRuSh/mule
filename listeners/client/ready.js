@@ -18,7 +18,7 @@ class ReadyListener extends Listener {
       const guildSize = this.client.guilds.size;
 
       status(`Logged in as ${me.tag} (ID: ${me.id})`);
-      me.setActivity(`@${me.username} help`, { type: 'WATCHING' });
+      me.setActivity(`@${me.username} help`, { type: 'STREAMING' });
 
       if (guildSize)
         status(`Listening to ${guildSize === 1
